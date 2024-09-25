@@ -1,0 +1,242 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2024-09-14T02:36:22Z"
+  generateName: nginx-1-cd9f686f7-
+  labels:
+    app: nginx-1
+    pod-template-hash: cd9f686f7
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:generateName: {}
+        f:labels:
+          .: {}
+          f:app: {}
+          f:pod-template-hash: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"c4c4780b-22bd-4d6f-9c21-787584642d43"}: {}
+      f:spec:
+        f:containers:
+          k:{"name":"nginx-1"}:
+            .: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources:
+              .: {}
+              f:limits:
+                .: {}
+                f:ephemeral-storage: {}
+              f:requests:
+                .: {}
+                f:cpu: {}
+                f:ephemeral-storage: {}
+                f:memory: {}
+            f:securityContext:
+              .: {}
+              f:capabilities:
+                .: {}
+                f:drop: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext:
+          .: {}
+          f:seccompProfile:
+            .: {}
+            f:type: {}
+        f:terminationGracePeriodSeconds: {}
+        f:tolerations: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2024-09-14T02:36:22Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          .: {}
+          k:{"type":"PodScheduled"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+    manager: kube-scheduler
+    operation: Update
+    subresource: status
+    time: "2024-09-14T02:37:37Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"PodReadyToStartContainers"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:hostIPs: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"10.57.0.9"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    subresource: status
+    time: "2024-09-14T02:38:18Z"
+  name: nginx-1-cd9f686f7-t6kln
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: nginx-1-cd9f686f7
+    uid: c4c4780b-22bd-4d6f-9c21-787584642d43
+  resourceVersion: "10780"
+  uid: f8a6d89a-865d-4f35-b83c-2c6dd0662a5d
+spec:
+  containers:
+  - image: nginx:latest
+    imagePullPolicy: Always
+    name: nginx-1
+    resources:
+      limits:
+        ephemeral-storage: 1Gi
+      requests:
+        cpu: 500m
+        ephemeral-storage: 1Gi
+        memory: 2Gi
+    securityContext:
+      capabilities:
+        drop:
+        - NET_RAW
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-bmd42
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: gk3-autopilot-cluster-1-nap-683wj03l-f8bb411e-dhrn
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: gke.io/optimize-utilization-scheduler
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoSchedule
+    key: kubernetes.io/arch
+    operator: Equal
+    value: amd64
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-bmd42
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2024-09-14T02:38:18Z"
+    status: "True"
+    type: PodReadyToStartContainers
+  - lastProbeTime: null
+    lastTransitionTime: "2024-09-14T02:37:49Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2024-09-14T02:38:18Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2024-09-14T02:38:18Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2024-09-14T02:37:49Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://aab35f4b0ce5306ba607d071cd51b2a47a120ab7e336ecaa95a4d2ee1688c6e2
+    image: docker.io/library/nginx:latest
+    imageID: docker.io/library/nginx@sha256:04ba374043ccd2fc5c593885c0eacddebabd5ca375f9323666f28dfd5a9710e3
+    lastState: {}
+    name: nginx-1
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2024-09-14T02:38:17Z"
+  hostIP: 10.138.0.4
+  hostIPs:
+  - ip: 10.138.0.4
+  phase: Running
+  podIP: 10.57.0.9
+  podIPs:
+  - ip: 10.57.0.9
+  qosClass: Burstable
+  startTime: "2024-09-14T02:37:49Z"
